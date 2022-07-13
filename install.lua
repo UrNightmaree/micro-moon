@@ -12,13 +12,22 @@ end;
 
 function isdir(path) return exists(path.."/") end;
 
+function getop(cmd)
+   local f = io.popen(cmd);
+   local output = f:read();
+   f:close();
+
+   return output;
+end;
+
+
 local exec = os.execute;
 
-if exec('which git'):match('not found') then
+if getop('which git'):match('not found') then
    print 'Install git!';
    return;
 end
-if exec('which micro'):match('not found') then
+if getop('which micro'):match('not found') then
    print 'Install Micro!';
    return;
 end
