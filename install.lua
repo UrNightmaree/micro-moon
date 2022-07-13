@@ -14,11 +14,11 @@ function isdir(path) return exists(path.."/") end;
 
 local exec = os.execute;
 
-if exec('which git') == 'not found' then
+if exec('which git'):match('not found') then
    print 'Install git!';
    return;
 end
-if exec('which micro') == 'not found' then
+if exec('which micro'):match('not found') then
    print 'Install Micro!';
    return;
 end
