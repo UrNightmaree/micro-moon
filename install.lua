@@ -40,4 +40,6 @@ end
 
 exec 'cd micro-moon && mv moonscript.yaml ~/.config/micro/syntax';
 
-print 'Installation complete'
+exec 'rm -fr $(pwd)/micro-moon'
+
+print '\nInstallation complete\n';
