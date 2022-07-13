@@ -40,6 +40,8 @@ end
 
 exec 'cd micro-moon && mv moonscript.yaml ~/.config/micro/syntax';
 
-exec 'rm -fr $(pwd)/micro-moon'
+exec 'rm -fr $(pwd)/micro-moon';
 
 print '\nInstallation complete\n';
+
+exec 'rm install.lua';
