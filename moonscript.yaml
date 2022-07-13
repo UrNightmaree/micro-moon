@@ -1,0 +1,41 @@
+filetype: "moonscript"
+
+detect:
+   filename: "\\.moon$"
+
+rules:
+   - type.keyword: "\\b(pairs|ipairs|load|loadstring)\\b" # Special function keyword
+   - special: "\\b(dofile|require|loadfile)\\b" # Another special keyword
+
+   - statement: "\\b(if|unless|else|elseif|then|for|while|do|switch|when|goto|export|import|with|class|break|in|return)\\b" # Regular statement keyword
+   - statement: "\\b(and|or|not)\\b"
+   - statement: "(->|=>)"
+
+   - identifier: "\\:\\:.+?\\:\\:"
+   - identifier: "_G\\..?"
+   - identifier: "(.+?\\:|\\:.+?)"
+   - identifier: "\\..+?(!|[\\(]| )"
+   - identifier: "\\\\.+?(!|[\\(]| )"
+   - identifier: "\\:\\:.+?\\:\\:"
+   - identifier: "\\bprint\\b([\\(]| )" # Keyword for print
+   - identifier: "\\b(tostring|tonumber)\\b([\\(]| )"
+
+   - constant.number: "\\b((0[xX](([0-9A-Fa-f]+\\.[0-9A-Fa-f]*)|(\\.?[0-9A-Fa-f]+))([pP][-+]?[0-9]+)?)|((([0-9]+\\.[0-9]*)|(\\.?[0-9]+))([eE][-+]?[0-9]+)?))"
+   - constant.bool: "\\b(false|true|nil)\\b"
+
+   - constant.symbol: "="
+   - symbol.brackets: "[(){}\\[\\]]"
+   - symbol: " "
+   - constant.symbol: "(>|<|>=|<=|~=|!=)" # Conditional syntax
+   - constant.symbol: "(\\+|-|\\*|/|\\^|%|!!#)" # Math syntax
+   - constant.symbol: "(\\+=|-=|/=|\\*=|[\\.]{2,3})" # Operator syntax
+   - constant.symbol: "(\\band\\b=|\\bor\\b=)"
+
+   - comment: "--.+"
+   - comment.bright: "#!.+"
+
+   - constant.string:
+      start: "\""
+      end: "\""
+      skip: "\\\\."
+      rules: []
